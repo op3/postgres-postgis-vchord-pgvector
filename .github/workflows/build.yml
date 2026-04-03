@@ -50,8 +50,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+      # - name: Set up QEMU
+      #   uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
@@ -68,7 +68,10 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64
+          # arm64 disabled: postgis base image only supports amd64
+          # See: https://github.com/postgis/docker-postgis/issues/216
+          platforms: linux/amd64
+          # platforms: linux/amd64,linux/arm64
           provenance: false
           tags: |
             ghcr.io/${{ github.repository }}:${{ env.BASE }}-${{ needs.versions.outputs.VCHORD }}-${{ needs.versions.outputs.PGVECTOR }}
