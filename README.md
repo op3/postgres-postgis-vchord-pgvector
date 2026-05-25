@@ -19,7 +19,7 @@ Additional tags:
 | Extension | Description |
 |-----------|-------------|
 | [PostGIS](http://postgis.net/) | Spatial database extension for PostgreSQL |
-| [VectorChord](https://github.com/tensorchord/VectorChord) | Scalable vector search with RaBitQ compression |
+| [VectorChord](https://github.com/supervc-stack/VectorChord) | Scalable vector search with RaBitQ compression |
 | [pgvector](https://github.com/pgvector/pgvector) | Vector similarity search for PostgreSQL |
 
 ## Usage
@@ -51,7 +51,7 @@ VectorChord and pgvector versions are fetched at build time from their respectiv
 ## Related Projects
 
 - [docker-postgis](https://github.com/postgis/docker-postgis) - Base PostGIS image
-- [VectorChord](https://github.com/tensorchord/VectorChord) - Vector search extension
+- [VectorChord](https://github.com/supervc-stack/VectorChord) - Vector search extension
 - [pgvector](https://github.com/pgvector/pgvector) - Vector similarity search
 
 ## License

@@ -21,7 +21,7 @@ jobs:
       - name: Get latest versions
         id: versions
         run: |
-          VCHORD=$(curl -s https://api.github.com/repos/tensorchord/VectorChord/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+          VCHORD=$(curl -s https://api.github.com/repos/supervc-stack/VectorChord/releases/latest | jq -r '.tag_name' | sed 's/^v//')
           echo "VCHORD=${VCHORD}" >> $GITHUB_OUTPUT
           VCHORD_SHORT=$(echo "$VCHORD" | cut -d. -f1,2)
           echo "VCHORD_SHORT=${VCHORD_SHORT}" >> $GITHUB_OUTPUT
