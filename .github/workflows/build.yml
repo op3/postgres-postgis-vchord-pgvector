@@ -42,6 +42,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     env:
       BASE: ${{ matrix.pg_major }}-${{ matrix.postgis_version }}
       VCHORD: ${{ needs.versions.outputs.VCHORD }}
@@ -64,6 +66,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
+        id: build
         uses: docker/build-push-action@v7
         with:
           context: .
@@ -81,3 +84,10 @@ jobs:
             BASE=${{ env.BASE }}
             VCHORD=${{ env.VCHORD }}
             PGVECTOR=${{ env.PGVECTOR }}
+
+      - name: Generate artifact attestation
+        uses: actions/attest@v4
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          push-to-registry: true
